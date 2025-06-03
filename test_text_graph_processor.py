@@ -38,6 +38,15 @@ def text_graph_processor():
 
 class TestFindBridgeWords:
 
+    def test_bridge_words_exists_within_hops(self, text_graph_processor):
+        # Test case 1: word1="the", word2="team", max_hops=2
+        bridge_words, error_msg = text_graph_processor.find_bridge_words("the", "carefully", 3)
+        assert set(bridge_words) == {"scientist"}
+        assert error_msg is None
+
+
+
+
     def test_no_bridge_words_within_hops(self, text_graph_processor):
         # Test case 2: word1="analyzed", word2="data", max_hops=1
         bridge_words, error_msg = text_graph_processor.find_bridge_words("analyzed", "data", 1)
